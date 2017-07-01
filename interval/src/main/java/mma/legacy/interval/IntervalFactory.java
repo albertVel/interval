@@ -9,7 +9,7 @@ package mma.legacy.interval;
  */
 class IntervalFactory {
 
-	static Interval getInterval(double minimum, double maximum, Opening opening) {
+	static Interval getInterval(int minimum, int maximum, Opening opening) {
 		return new Interval(minimum, maximum, opening);
 	}
 }

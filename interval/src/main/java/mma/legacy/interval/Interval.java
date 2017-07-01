@@ -7,8 +7,8 @@ import com.sun.media.jfxmedia.logging.Logger;
  */
 class Interval {
 
-    private final double minimum;  // número entero que indica el limite superior del intervalo
-    private final double maximum;  // número entero que indica el limite superior del intervalo
+    private final int minimum;  // número entero que indica el limite superior del intervalo
+    private final int maximum;  // número entero que indica el limite superior del intervalo
     private final Opening opening; // Valor booleano que indica si el intervalo es abierto o cerrado
 
     /**
@@ -18,7 +18,7 @@ class Interval {
      * @param maximum El intervalo maximo
      * @param opening Tipo de opening
      */
-    Interval(double minimum, double maximum, Opening opening) {
+    Interval(int minimum, int maximum, Opening opening) {
         this.minimum = minimum;
         this.maximum = maximum;
         this.opening = opening;
