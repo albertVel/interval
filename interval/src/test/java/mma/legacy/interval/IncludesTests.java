@@ -1,11 +1,18 @@
 package mma.legacy.interval;
 
-import static org.junit.Assert.*;
-
+import org.apache.log4j.BasicConfigurator;
+import org.junit.BeforeClass;
 import org.junit.Test;
+
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 public class IncludesTests {
 
+    @BeforeClass
+    public static void setUpClass() {
+        BasicConfigurator.configure();
+    }
     @Test
     public void Incluido_Dentro_Both_Opened_Por_Abajo() {
         assertTrue(IntervalFactory.getInterval(0, 10, Opening.BOTH_OPENED).includes(1));

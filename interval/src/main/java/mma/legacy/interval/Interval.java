@@ -1,11 +1,14 @@
 package mma.legacy.interval;
 
-import com.sun.media.jfxmedia.logging.Logger;
+import org.apache.log4j.Logger;
 
 /**
  * Controla operaciones sobre intervalos que pueden ser abiertos o cerrados
  */
 class Interval {
+
+
+    final private static Logger logger = Logger.getLogger(Interval.class);
 
     private final int minimum;  // número entero que indica el limite superior del intervalo
     private final int maximum;  // número entero que indica el limite superior del intervalo
@@ -22,7 +25,7 @@ class Interval {
         this.minimum = minimum;
         this.maximum = maximum;
         this.opening = opening;
-        Logger.logMsg(1,"objeto creado");
+        logger.debug("objeto creado");
     }
 
     /**
@@ -31,14 +34,14 @@ class Interval {
      * @return Devuelve el punto medio entre maximum y minimum.
      */
     double PuntoMedio() {
-        return (maximum + minimum) / 2;
+        return (double) (maximum + minimum) / 2;
     }
 
     /*
      * Este método mira si un número está dentro de un determiando intervalo
      */
     boolean includes(double value) {
-        Logger.logMsg(1,"Entro en el método");
+        logger.debug("Entro en el método");
         switch (opening) {
             case BOTH_OPENED:
                 return minimum < value && value < maximum;
