@@ -112,18 +112,16 @@ class Interval {
             case LEFT_OPENED:
                 return MinimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             case RIGHT_OPENED:
-                return (minimumIncluded)
-                        && (MaximoDentroIntervalo(interval, maximumIncluded));
+                return MinimoIncluidoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             case UNOPENED:
-                return (minimumIncluded)
-                        && (MaximoDentroIntervalo(interval, maximumIncluded));
+                return MinimoIncluidoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             default:
                 return false;
         }
     }
 
     private boolean MinimoYMaximoDentroIntervalo(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
-        return MinimoDentroIntervalo(interval, minimumIncluded) && MaximoDentroIntervalo(interval, maximumIncluded);
+        return MinimoIncluidoYMaximoDentroIntervalo(interval, MinimoDentroIntervalo(interval, minimumIncluded), maximumIncluded);
     }
 
     private boolean MaximoDentroIntervalo(Interval interval, boolean maximumIncluded) {
@@ -141,13 +139,16 @@ class Interval {
             case LEFT_OPENED:
                 return MinimoDentroIntervaloYMaximoIncluido(interval, minimumIncluded, maximumIncluded);
             case RIGHT_OPENED:
-                return (minimumIncluded)
-                        && (MaximoDentroIntervalo(interval, maximumIncluded));
+                return MinimoIncluidoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             case UNOPENED:
                 return (minimumIncluded) && (maximumIncluded);
             default:
                 return false;
         }
+    }
+
+    private boolean MinimoIncluidoYMaximoDentroIntervalo(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
+        return (minimumIncluded) && (MaximoDentroIntervalo(interval, maximumIncluded));
     }
 
     private boolean MinimoDentroIntervaloYMaximoIncluido(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
