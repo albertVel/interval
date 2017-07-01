@@ -7,7 +7,6 @@ import org.apache.log4j.Logger;
  */
 class Interval {
 
-
     final private static Logger logger = Logger.getLogger(Interval.class);
 
     private final int minimum;  // número entero que indica el limite superior del intervalo
