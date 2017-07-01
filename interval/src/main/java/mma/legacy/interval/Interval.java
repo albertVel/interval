@@ -23,7 +23,6 @@ class Interval {
         this.maximum = maximum;
         this.opening = opening;
         Logger.logMsg(1,"objeto creado");
-        System.out.println();
     }
 
     /**
