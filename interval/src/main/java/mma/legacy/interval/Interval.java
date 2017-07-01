@@ -164,16 +164,16 @@ class Interval {
      */
     boolean intersectsWith(Interval interval) {
         if (minimum == interval.maximum) {
-            return CasoMinimoIgualMaximo(interval);
+            return casoMinimoIgualMaximo(interval);
         }
         if (maximum == interval.minimum) {
-            return CasoMaximoIgualMinimo(interval);
+            return casoMaximoIgualMinimo(interval);
         }
         return this.includes(interval.minimum)
                 || this.includes(interval.maximum);
     }
 
-    private boolean CasoMaximoIgualMinimo(Interval interval) {
+    private boolean casoMaximoIgualMinimo(Interval interval) {
         switch (opening) {
             case BOTH_OPENED:
             case RIGHT_OPENED:
@@ -187,7 +187,7 @@ class Interval {
         }
     }
 
-    private boolean CasoMinimoIgualMaximo(Interval interval) {
+    private boolean casoMinimoIgualMaximo(Interval interval) {
         switch (opening) {
             case BOTH_OPENED:
             case LEFT_OPENED:
