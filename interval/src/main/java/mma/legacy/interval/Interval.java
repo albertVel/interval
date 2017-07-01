@@ -7,7 +7,7 @@ import org.apache.log4j.Logger;
  */
 class Interval {
 
-    final private static Logger logger = Logger.getLogger(Interval.class);
+    private final static Logger logger = Logger.getLogger(Interval.class);
 
     private final int minimum;  // número entero que indica el limite superior del intervalo
     private final int maximum;  // número entero que indica el limite superior del intervalo
@@ -32,7 +32,7 @@ class Interval {
      *
      * @return Devuelve el punto medio entre maximum y minimum.
      */
-    double PuntoMedio() {
+    double puntoMedio() {
         return (double) (maximum + minimum) / 2;
     }
 
@@ -65,83 +65,83 @@ class Interval {
         boolean maximumIncluded = this.includes(interval.maximum);
         switch (opening) {
             case BOTH_OPENED:
-                return CasoBothOpened(interval, minimumIncluded, maximumIncluded);
+                return casoBothOpened(interval, minimumIncluded, maximumIncluded);
             case LEFT_OPENED:
-                return CasoLeftOpened(interval, minimumIncluded, maximumIncluded);
+                return casoLeftOpened(interval, minimumIncluded, maximumIncluded);
             case RIGHT_OPENED:
-                return CasoRightOpened(interval, minimumIncluded, maximumIncluded);
+                return casoRightOpened(interval, minimumIncluded, maximumIncluded);
             case UNOPENED:
-                return CasoUnopened(interval, minimumIncluded, maximumIncluded);
+                return casoUnopened(interval, minimumIncluded, maximumIncluded);
             default:
                 return false;
         }
     }
 
-    private boolean CasoUnopened(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
+    private boolean casoUnopened(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
         switch (interval.opening) {
             case BOTH_OPENED:
-                return MinimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
+                return minimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             case LEFT_OPENED:
-                return MinimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
+                return minimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             case RIGHT_OPENED:
-                return MinimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
+                return minimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             case UNOPENED:
-                return MinimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
+                return minimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             default:
                 return false;
         }
     }
 
-    private boolean CasoRightOpened(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
+    private boolean casoRightOpened(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
         switch (interval.opening) {
             case BOTH_OPENED:
-                return MinimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
+                return minimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             case LEFT_OPENED:
-                return MinimoDentroIntervaloYMaximoIncluido(interval, minimumIncluded, maximumIncluded);
+                return minimoDentroIntervaloYMaximoIncluido(interval, minimumIncluded, maximumIncluded);
             case RIGHT_OPENED:
-                return MinimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
+                return minimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             case UNOPENED:
-                return MinimoDentroIntervaloYMaximoIncluido(interval, minimumIncluded, maximumIncluded);
+                return minimoDentroIntervaloYMaximoIncluido(interval, minimumIncluded, maximumIncluded);
             default:
                 return false;
         }
     }
 
-    private boolean CasoLeftOpened(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
+    private boolean casoLeftOpened(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
         switch (interval.opening) {
             case BOTH_OPENED:
-                return MinimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
+                return minimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             case LEFT_OPENED:
-                return MinimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
+                return minimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             case RIGHT_OPENED:
-                return MinimoIncluidoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
+                return minimoIncluidoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             case UNOPENED:
-                return MinimoIncluidoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
+                return minimoIncluidoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             default:
                 return false;
         }
     }
 
-    private boolean MinimoYMaximoDentroIntervalo(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
-        return MinimoIncluidoYMaximoDentroIntervalo(interval, MinimoDentroIntervalo(interval, minimumIncluded), maximumIncluded);
+    private boolean minimoYMaximoDentroIntervalo(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
+        return minimoIncluidoYMaximoDentroIntervalo(interval, minimoDentroIntervalo(interval, minimumIncluded), maximumIncluded);
     }
 
-    private boolean MaximoDentroIntervalo(Interval interval, boolean maximumIncluded) {
+    private boolean maximoDentroIntervalo(Interval interval, boolean maximumIncluded) {
         return maximumIncluded || maximum == interval.maximum;
     }
 
-    private boolean MinimoDentroIntervalo(Interval interval, boolean minimumIncluded) {
+    private boolean minimoDentroIntervalo(Interval interval, boolean minimumIncluded) {
         return minimumIncluded || minimum == interval.minimum;
     }
 
-    private boolean CasoBothOpened(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
+    private boolean casoBothOpened(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
         switch (interval.opening) {
             case BOTH_OPENED:
-                return MinimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
+                return minimoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             case LEFT_OPENED:
-                return MinimoDentroIntervaloYMaximoIncluido(interval, minimumIncluded, maximumIncluded);
+                return minimoDentroIntervaloYMaximoIncluido(interval, minimumIncluded, maximumIncluded);
             case RIGHT_OPENED:
-                return MinimoIncluidoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
+                return minimoIncluidoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             case UNOPENED:
                 return (minimumIncluded) && (maximumIncluded);
             default:
@@ -149,11 +149,11 @@ class Interval {
         }
     }
 
-    private boolean MinimoIncluidoYMaximoDentroIntervalo(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
-        return (minimumIncluded) && (MaximoDentroIntervalo(interval, maximumIncluded));
+    private boolean minimoIncluidoYMaximoDentroIntervalo(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
+        return (minimumIncluded) && (maximoDentroIntervalo(interval, maximumIncluded));
     }
 
-    private boolean MinimoDentroIntervaloYMaximoIncluido(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
+    private boolean minimoDentroIntervaloYMaximoIncluido(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
         return (minimumIncluded || minimum == interval.minimum) && (maximumIncluded);
     }
 
