@@ -164,32 +164,40 @@ class Interval {
      */
     boolean intersectsWith(Interval interval) {
         if (minimum == interval.maximum) {
-            switch (opening) {
-                case BOTH_OPENED:
-                case LEFT_OPENED:
-                    return false;
-                case RIGHT_OPENED:
-                case UNOPENED:
-                    return interval.opening == Opening.LEFT_OPENED ||
-                            interval.opening == Opening.UNOPENED;
-                default:
-                    return false;
-            }
+            return CasoMinimoIgualMaximo(interval);
         }
         if (maximum == interval.minimum) {
-            switch (opening) {
-                case BOTH_OPENED:
-                case RIGHT_OPENED:
-                    return false;
-                case LEFT_OPENED:
-                case UNOPENED:
-                    return interval.opening == Opening.RIGHT_OPENED ||
-                            interval.opening == Opening.UNOPENED;
-                default:
-                    return false;
-            }
+            return CasoMaximoIgualMinimo(interval);
         }
         return this.includes(interval.minimum)
                 || this.includes(interval.maximum);
+    }
+
+    private boolean CasoMaximoIgualMinimo(Interval interval) {
+        switch (opening) {
+            case BOTH_OPENED:
+            case RIGHT_OPENED:
+                return false;
+            case LEFT_OPENED:
+            case UNOPENED:
+                return interval.opening == Opening.RIGHT_OPENED ||
+                        interval.opening == Opening.UNOPENED;
+            default:
+                return false;
+        }
+    }
+
+    private boolean CasoMinimoIgualMaximo(Interval interval) {
+        switch (opening) {
+            case BOTH_OPENED:
+            case LEFT_OPENED:
+                return false;
+            case RIGHT_OPENED:
+            case UNOPENED:
+                return interval.opening == Opening.LEFT_OPENED ||
+                        interval.opening == Opening.UNOPENED;
+            default:
+                return false;
+        }
     }
 }
