@@ -156,10 +156,14 @@ class Interval {
             case RIGHT_OPENED:
                 return minimoIncluidoYMaximoDentroIntervalo(interval, minimumIncluded, maximumIncluded);
             case UNOPENED:
-                return (minimumIncluded) && (maximumIncluded);
+                return casobothopenedwithUnopened(minimumIncluded, maximumIncluded);
             default:
                 return false;
         }
+    }
+
+    private boolean casobothopenedwithUnopened(boolean minimumIncluded, boolean maximumIncluded) {
+        return (minimumIncluded) && (maximumIncluded);
     }
 
     private boolean minimoIncluidoYMaximoDentroIntervalo(Interval interval, boolean minimumIncluded, boolean maximumIncluded) {
