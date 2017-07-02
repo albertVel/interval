@@ -43,16 +43,29 @@ class Interval {
         logger.debug("Entro en el método");
         switch (opening) {
             case BOTH_OPENED:
-                return minimum < value && value < maximum;
+                return includesBothOpened(value);
             case LEFT_OPENED:
-                return minimum < value && value <= maximum;
+                return  includesLeftOpened(value)   ;
             case RIGHT_OPENED:
-                return minimum <= value && value < maximum;
+                return includeRightOpened(value);
             case UNOPENED:
-                return minimum <= value && value <= maximum;
+                return includesClosed(value);
             default:
                 return false;
         }
+    }
+
+    private boolean includesBothOpened(double value) {
+        return minimum < value && value < maximum;
+    }
+    private boolean includesLeftOpened(double value) {
+        return  minimum < value && value <= maximum;
+    }
+    private boolean includeRightOpened(double value) {
+        return minimum <= value && value < maximum;
+    }
+    private boolean includesClosed(double value) {
+        return minimum <= value && value <= maximum;
     }
 
     /**
