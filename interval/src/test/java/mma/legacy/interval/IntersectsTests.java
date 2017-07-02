@@ -8,7 +8,7 @@ import static org.junit.Assert.assertTrue;
 public class IntersectsTests {
 
     @Test
-    public void hasIntersectionTest() {
+    public void IntervalOpenendhasIntersectionTest() {
 
         Interval bothOpenedPivot = IntervalFactory.getInterval(20, 40, Opening.BOTH_OPENED);
 
@@ -49,6 +49,12 @@ public class IntersectsTests {
         assertFalse(bothOpenedPivot.intersectsWith(IntervalFactory.getInterval(40, 50, Opening.UNOPENED)));
         assertFalse(bothOpenedPivot.intersectsWith(IntervalFactory.getInterval(45, 55, Opening.UNOPENED)));
 
+
+    }
+
+    @Test
+    public void IntervalIzquierdaOpeneedhasIntersectionTest() {
+
         Interval leftOpenedPivot = IntervalFactory.getInterval(20, 40, Opening.LEFT_OPENED);
 
         assertFalse(leftOpenedPivot.intersectsWith(IntervalFactory.getInterval(5, 15, Opening.BOTH_OPENED)));
@@ -87,6 +93,13 @@ public class IntersectsTests {
         assertTrue(leftOpenedPivot.intersectsWith(IntervalFactory.getInterval(35, 45, Opening.UNOPENED)));
         assertTrue(leftOpenedPivot.intersectsWith(IntervalFactory.getInterval(40, 50, Opening.UNOPENED)));
         assertFalse(leftOpenedPivot.intersectsWith(IntervalFactory.getInterval(45, 55, Opening.UNOPENED)));
+
+    }
+
+    @Test
+    public void IntervalDerechaOpenendhasIntersectionTest() {
+
+
         Interval rightOpenedPivot = IntervalFactory.getInterval(20, 40, Opening.RIGHT_OPENED);
         assertFalse(rightOpenedPivot.intersectsWith(IntervalFactory.getInterval(5, 15, Opening.BOTH_OPENED)));
         assertFalse(rightOpenedPivot.intersectsWith(IntervalFactory.getInterval(10, 20, Opening.BOTH_OPENED)));
@@ -124,6 +137,11 @@ public class IntersectsTests {
         assertTrue(rightOpenedPivot.intersectsWith(IntervalFactory.getInterval(35, 45, Opening.UNOPENED)));
         assertFalse(rightOpenedPivot.intersectsWith(IntervalFactory.getInterval(40, 50, Opening.UNOPENED)));
         assertFalse(rightOpenedPivot.intersectsWith(IntervalFactory.getInterval(45, 55, Opening.UNOPENED)));
+
+    }
+
+    @Test
+    public void IntervalCerradohasIntersectionTest(){
         Interval unopenedPivot = IntervalFactory.getInterval(20, 40, Opening.UNOPENED);
         assertFalse(unopenedPivot.intersectsWith(IntervalFactory.getInterval(5, 15, Opening.BOTH_OPENED)));
         assertFalse(unopenedPivot.intersectsWith(IntervalFactory.getInterval(10, 20, Opening.BOTH_OPENED)));
